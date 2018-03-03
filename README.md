@@ -12,7 +12,7 @@ express会把所有的请求方式都作为方法挂载到app对象中，客户�
 const express = require('express')
 const app = express()
 app.get('/', (req, res, next) => {
-    //...
+    res.send("ok")
 })
 app.listen(8080, () => {
   console.log('port created successfully')
@@ -25,6 +25,7 @@ const app = express()
 app.get('/', (req, res, next) => {
     let GET = req.query
     console.log(GET)
+    res.send("ok")
 })
 app.listen(8080, () => {
   console.log('port created successfully')
@@ -39,8 +40,28 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.get('/', (req, res, next) => {
     let POST = req.body
     console.log(POST)
+    res.send("ok")
 })
 app.listen(8080, () => {
   console.log('port created successfully')
+})
+```
+## 处理cookie
+```js
+const express = require("express");
+const cookieParser = require("cookie-parser");
+const app = express();
+app.use(cookieParser("qianmingzifuchuang"));
+app.use("/", (req, res) => {
+    req.secret = "qianmingzifuchuang";
+    res.cookie("password", "123456", {
+        signed: true
+    })
+    let cookies = req.signedCookies;
+    console.log(cookies);
+    res.send("ok")
+})
+app.listen(8080, () => {
+    console.log("successfully!")
 })
 ```
