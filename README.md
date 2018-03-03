@@ -46,25 +46,7 @@ app.listen(8080, () => {
   console.log('port created successfully')
 })
 ```
-## 处理cookie
-```js
-const express = require("express")
-const cookieParser = require("cookie-parser")
-const app = express()
-app.use(cookieParser("qianmingzifuchuang"))
-app.use("/", (req, res) => {
-    req.secret = "qianmingzifuchuang"
-    res.cookie("password", "123456", {
-        signed: true
-    })
-    console.log('未签名cookies', req.cookies)
-    console.log('签名cookies', req.signedCookies)
-    res.send("ok")
-})
-app.listen(8080, () => {
-    console.log("successfully!")
-})
-```
+## 处理session
 ```js
 const cookieSession = require('cookie-session')
 const express = require('express')
