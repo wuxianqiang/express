@@ -63,3 +63,17 @@ app.get('/', function (req, res, next) {
  
 app.listen(3000)
 ```
+## 路由处理
+```js
+//https://xxx.com/user/1.html
+//https://xxx.com/user/2.html
+
+const routerUser = express.Router()
+server.use("/user", routerUser)
+routerUser.get("/1.html", function (req, res) {
+  res.send("1")
+})
+routerUser.get("/2.html", function (req, res) {
+  res.send("2")
+})
+```
