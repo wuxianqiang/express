@@ -65,3 +65,19 @@ app.listen(8080, () => {
     console.log("successfully!")
 })
 ```
+```js
+const cookieSession = require('cookie-session')
+const express = require('express')
+const app = express()
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}))
+ 
+app.get('/', function (req, res, next) {
+  req.session.views = 1
+  res.send("ok")
+})
+ 
+app.listen(3000)
+```
