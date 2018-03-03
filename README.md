@@ -11,7 +11,7 @@ express会把所有的请求方式都作为方法挂载到app对象中，客户�
 ```js
 const express = require('express')
 const app = express()
-app.get('/', (res, res, next) => {
+app.get('/', (req, res, next) => {
     //...
 })
 app.listen(8080, () => {
