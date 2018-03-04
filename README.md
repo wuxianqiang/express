@@ -69,7 +69,7 @@ app.listen(3000)
 //https://xxx.com/user/2.html
 
 const routerUser = express.Router()
-server.use("/user", routerUser)
+app.use("/user", routerUser)
 routerUser.get("/1.html", function (req, res) {
   res.send("1")
 })
@@ -80,11 +80,15 @@ routerUser.get("/2.html", function (req, res) {
 ## 模板适配
 ```js
 const consolidate = require('consolidate')
-server.set("view engine", "html");
-server.set("view", "./template");
-server.engine("html", consolidate.ejs)
+app.set("view engine", "html");
+app.set("view", "./template");
+app.engine("html", consolidate.ejs)
 
-server.get('/', function () {
+app.get('/', function () {
   res.render("index.ejs", {})
 })
+```
+## 处理文件
+```js
+app.use(express.static('./dist'))
 ```
