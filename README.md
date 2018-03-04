@@ -92,3 +92,9 @@ app.get('/', function () {
 ```js
 app.use(express.static('./dist'))
 ```
+## 处理404
+```js
+app.use((req, res, next) => {
+  res.sendFile(path.resolve(__dirname, './404.html'))
+})
+```
